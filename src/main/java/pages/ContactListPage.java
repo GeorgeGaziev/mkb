@@ -12,15 +12,16 @@ import utils.DriverManager;
  */
 public class ContactListPage extends HomePage {
 
-    //@FindBy(xpath = "//*[@title=\"Контакты моих компаний Аплет списка\"]//*[contains(@class,\"siebui-icon-newquery\")]")
+
     @FindBy(xpath = "//*[@rn=\"Contacts Company List Applet\"]//*[contains(@class,\"siebui-icon-newquery\")]")
     private WebElement newQueryButton;
-    //@FindBy(xpath = "//*[@title=\"Контакты моих компаний Аплет списка\"]//*[contains(@class,\"siebui-icon-exec\")]")
+
     @FindBy(xpath = "//*[@rn=\"Contacts Company List Applet\"]//*[contains(@class,\"siebui-icon-exec\")]")
     private WebElement executeQueryButton;
-    //@FindBy(xpath = "//*[@title=\"Контакты моих компаний Аплет списка\"]//input[contains(@class,\"siebui-ctrl-input\")]")
+
     @FindBy(xpath = "//*[@rn=\"Contacts Company List Applet\"]//input[contains(@class,\"siebui-ctrl-input\")]")
     private WebElement appletQueryControl;
+
     private Applet contactListApplet;
 
     public ContactListPage() {

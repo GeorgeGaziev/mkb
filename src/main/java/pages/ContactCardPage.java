@@ -12,8 +12,8 @@ public class ContactCardPage extends HomePage {
     public Applet getContactCardFormApplet() {
         waitUntilPageLoaded();
         if (contactCardFormApplet == null) {
-            return new Applet("Contact Form Applet");
-        } else return contactCardFormApplet;
-
+            contactCardFormApplet = new Applet("Contact Form Applet");
+        }
+        return contactCardFormApplet;
     }
 }

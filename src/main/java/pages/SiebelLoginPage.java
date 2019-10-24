@@ -10,8 +10,10 @@ public class SiebelLoginPage extends BasePageObject {
 
     @FindBy(name = "SWEUserName")
     private WebElement usernameField;
+
     @FindBy(name = "SWEPassword")
     private WebElement passwordField;
+
     @FindBy(css = ".siebui-login-btn input")
     private WebElement loginButton;
 

@@ -8,9 +8,8 @@ import utils.DriverManager;
 public class HomePage extends BasePageObject {
 
     @FindBy(xpath = "//*[@rn=\"Contacts Screen\"]//a")
-    //@FindBy(xpath = "//div[contains(@class,\"siebui-nav-tabs siebui-nav-tabScreen\")]//a[text()=\"Контакты\"]")
-    private
-    WebElement contactTab;
+    private WebElement contactTab;
+
     @FindBy(css = ".siebui-logo")
     private WebElement logo;
 
