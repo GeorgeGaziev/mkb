@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.junit.After;
 import org.junit.Before;
@@ -23,12 +24,13 @@ public class contactDemoTest extends BasePageObject {
     @Before
     public void setUp() {
         driver = DriverManager.getDriver();
+        gotoCrm();
         logInCrm("sadmin", "sadmin");
-        HomePage homePage = new HomePage();
-        homePage.gotoContactView();
+        gotoContactView();
     }
 
     @Test
+    @Description("Сверка отображаемых параметров на списке \"Мои контакты\" со значениями в карточке контакта")
     public void contactDemoTest() {
         ContactListPage contactListPage = new ContactListPage();
         contactListPage.findRecordOnListApplet("[Last Name] = 'Иванов'");
@@ -48,16 +50,27 @@ public class contactDemoTest extends BasePageObject {
         collector.checkThat("Отчество на списке не сходится со значением на карточке", middleNameOnList, is(middleNameOnCard));
     }
 
-    @Step
-    private void logInCrm(String username, String password) {
-        driver.get("http://192.168.71.34/sibur/start.swe?SWECmd=AutoOn");
-        SiebelLoginPage siebelLoginPage = new SiebelLoginPage();
-        siebelLoginPage.loginAs(username, password);
-    }
-
     @After
     public void shutDown() {
         DriverManager.executeScript("SWEClearHistoryGotoURL (\"/sibur/start.swe?SWENeedContext=false&SWECmd=Logoff\");");
         DriverManager.quitDriver();
     }
+
+    @Step("Переходим на экран \"Список контактов\"")
+    private void gotoContactView() {
+        HomePage homePage = new HomePage();
+        homePage.gotoContactView();
+    }
+
+    @Step("Переходим в приложение")
+    private void gotoCrm() {
+        driver.get("http://192.168.71.34/sibur/start.swe?SWECmd=AutoOn");
+    }
+
+    @Step("Логинимся в приложение")
+    private void logInCrm(String username, String password) {
+        SiebelLoginPage siebelLoginPage = new SiebelLoginPage();
+        siebelLoginPage.loginAs(username, password);
+    }
+
 }
